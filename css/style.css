@@ -1,0 +1,27 @@
+#home,
+#graf,
+#about {
+    margin-top: 10%;
+}
+
+img {
+    border-radius: 50%;
+}
+
+#search:focus {
+    border-bottom: 1px solid #ffa000 !important;
+}
+
+#info {
+    margin-top: 5%;
+}
+
+#tabel {
+    margin-top: 50px;
+}
+
+#clear {
+    position: absolute;
+    right: 50%;
+    margin-top: 10px;
+}
