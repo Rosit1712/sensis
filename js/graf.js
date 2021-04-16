@@ -3,7 +3,6 @@ const url = 'http://127.0.0.1:5500/data.json';
 fetch(url)
     .then(res => res.json())
     .then(data => {
-        // console.log(data.slice(0, 100));
         showData(data);
     }); 
 
@@ -15,46 +14,66 @@ function showData(data) {
     getId.forEach(element => {
         id.push(element.id);
     });
-    // let counter = 1;
-    // for (let i = 0; i < id.length; i++) {
-    //     if (id[counter] === id[id.length-1]) {
-    //         console.log(`${id[i]} - ${id[counter]}`);
-    //     } else {
-    //         if (counter > id.length-1) {
-    //             console.log(`${id[i]} - ${data.length}`);
-    //         } else {
-    //             console.log(`${id[i]} - ${id[counter]}`);
-    //         }
-    //     }
-    //     counter+=1;
-    // }
-    // for (let i = 0; i < data.length; i+100) {
-    //     console.log(i)     
-    // }    
-    // let rowMake = thead.insertRow();
-    // rowMake.insertCell(0).innerHTML = slices+=1;
-    // rowMake.insertCell(1).innerHTML = data[i].text;
-    // rowMake.insertCell(2).innerHTML = data[i].label;
-    // let body = document.getElementById('data');
-    // let createTable = document.createElement('table');
-    // body.appendChild(createTable);
+    let parentTab = document.getElementById('range');
+    id.forEach(nil => {
+        parentTab.innerHTML += `
+        <li class="tab col 1"><a href="#${nil}">${nil}</a></li>
+        `;
+    });
+    M.Tabs.init(parentTab);
+    let counter = 1;
+    let idTabel;
+    for (let i = 0; i < id.length; i++) {
+        if (id[counter] === id[id.length-1]) {
+            // console.log(`${id[i]} - ${id[counter]}`);
+            idTabel = document.getElementById(id[i]);
+            let num = 1;
+            data.forEach(element => {
+                if (data.indexOf(element) >= id[i] && data.indexOf(element) < id[counter]) {
+                    // console.log(data.indexOf(element))
+                    let rowMake = idTabel.insertRow();
 
-    // let getTable = document.querySelector('table');
-    // let thead = getTable.createTHead();
-    // let row = thead.insertRow(0);
+                    rowMake.insertCell(0).innerHTML = num;
+                    rowMake.insertCell(1).innerHTML = element.text;
+                    rowMake.insertCell(2).innerHTML = element.label;
+                    num+=1;
+                }
+            }); 
+        } else {
+            if (counter > id.length-1) {
+                // console.log(`${id[i]} - ${data.length}`);
+                idTabel = document.getElementById(id[i])
+                let num = 1;
+                data.forEach(element => {
+                    if (data.indexOf(element) >= id[i] && data.indexOf(element) < data.length) {
+                        // console.log(data.indexOf(element))
+                        let rowMake = idTabel.insertRow();
+
+                        rowMake.insertCell(0).innerHTML = num;
+                        rowMake.insertCell(1).innerHTML = element.text;
+                        rowMake.insertCell(2).innerHTML = element.label;
+                        num+=1;
+                    }
+                }); 
+            } else {
+                idTabel = document.getElementById(id[i])
+                let num = 1;
+                data.forEach(element => {
+                    if (data.indexOf(element) >= id[i] && data.indexOf(element) < id[counter]) {
+                        // console.log(data.indexOf(element))
+                        let rowMake = idTabel.insertRow();
     
-    // row.insertCell(0).innerHTML = 'No';
-    // row.insertCell(1).innerHTML = 'Text';
-    // row.insertCell(2).innerHTML = 'Label';
-    // let num = 0;
-    // data.forEach(e => {
-    //     let b = thead.insertRow();
-    //     b.insertCell(0).innerHTML = num+=1;
-    //     b.insertCell(1).innerHTML = e.text;
-    //     b.insertCell(2).innerHTML = e.label;
-        
-    // });
-
+                        rowMake.insertCell(0).innerHTML = num;
+                        rowMake.insertCell(1).innerHTML = element.text;
+                        rowMake.insertCell(2).innerHTML = element.label;
+                        num+=1;
+                    }
+                }); 
+                // console.log(`${id[i]} - ${id[counter]}`);
+            }
+        }
+        counter+=1;
+    }
 }
 
 function createTable(data) {
@@ -62,15 +81,15 @@ function createTable(data) {
     for (let i = 0; i < data.length; i++) {
         if (i % 100 === 0) {
         let body = document.getElementById('data');
-        let createTitle = document.createElement('h6');
+        // let createTitle = document.createElement('h6');
         let node;
             if (i === 2500) {
                 node = document.createTextNode(`Range ${i}-${data.length}`);
             } else {
                 node = document.createTextNode(`Range ${i}-${counter}`);
             }
-        createTitle.appendChild(node);
-        body.appendChild(createTitle);
+        // createTitle.appendChild(node);
+        // body.appendChild(createTitle);
 
         let createTable = document.createElement('table');
         createTable.id = i;
