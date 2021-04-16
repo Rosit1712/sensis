@@ -19,7 +19,6 @@ async function init() {
   // dt = await datadf.json();
 
   // console.log(dt[0].text);
-  // console.log(model.summary());
   console.log('Model Loaded Success');
 }
 

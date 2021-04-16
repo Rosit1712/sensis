@@ -25,3 +25,8 @@ img {
     right: 50%;
     margin-top: 10px;
 }
+
+#pie {
+    width: 400px;
+    height: 400px;
+}
