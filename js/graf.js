@@ -131,7 +131,6 @@ function createPie(dtPie) {
           'Negatif'
         ],
         datasets: [{
-          label: 'My First Dataset',
           data: dtPie,
           backgroundColor: [
             '#d8e3e7',
@@ -141,6 +140,7 @@ function createPie(dtPie) {
           hoverOffset: 4
         }]
       };
+
     const config = {
         type: 'pie',
         data: data,
@@ -160,6 +160,7 @@ function createPie(dtPie) {
             }
         }
     };
+
     const pie = new Chart(
         chart,
         config
@@ -171,5 +172,107 @@ const urlHistory = "http://127.0.0.1:5500/historymodel.json";
 fetch(urlHistory)
     .then(res => res.json())
     .then(data => {
-        console.log(Object.getOwnPropertyNames(data));
+        createLinePlot(data);
     })
+
+function createLinePlot(history) {
+    let numArray = Object.getOwnPropertyNames(history).sort();
+    console.log(numArray)
+
+    console.log(history)
+    let showhistory = [];
+    let loop = [];
+    let custHis = history.accuracy
+    custHis.forEach(element => {
+        // console.log(element);
+        showhistory.push(element);
+        loop.push(showhistory.indexOf(element)+1)
+    });
+
+    let showhistory1 = [];
+    let loop1 = [];
+    let custHis1 = history.loss
+    custHis1.forEach(element => {
+        // console.log(element);
+        showhistory1.push(element);
+        loop1.push(showhistory1.indexOf(element)+1)
+    });
+
+    let showhistory2 = [];
+    let loop2 = [];
+    let custHis2 = history.val_accuracy
+    custHis2.forEach(element => {
+        // console.log(element);
+        showhistory2.push(element);
+        loop2.push(showhistory2.indexOf(element)+1)
+    });
+
+    let showhistory3 = [];
+    let loop3 = [];
+    let custHis3 = history.val_loss
+    custHis3.forEach(element => {
+        // console.log(element);
+        showhistory2.push(element);
+        loop2.push(showhistory2.indexOf(element)+1)
+    });
+
+    numArray.forEach(element => {
+        if (element === 'accuracy') {
+            defLinePlot(element, showhistory, loop, element);            
+        }
+        if (element === 'loss') {
+            defLinePlot(element, showhistory1, loop1, element);            
+        }
+        if (element === 'val_accuracy') {
+            defLinePlot(element, showhistory2, loop2, element);            
+        }
+        if (element === 'val_loss') {
+            defLinePlot(element, showhistory3, loop3, element);            
+        }
+    });
+    // defLinePlot('trainacc', showhistory, loop, 'accuracy');
+    // let getPos = document.getElementById('trainacc').getContext('2d');
+
+    // const labels = loop;
+    // const data = {
+    //     labels: labels,
+    //     datasets: [{
+    //         label: 'Plot Loss Training',
+    //         data: showhistory,
+    //         fill: false,
+    //         borderColor: 'rgb(75, 192, 192)'
+    //     }]
+    // };
+    // const config = {
+    //     type: 'line',
+    //     data: data,
+    //   };
+
+    // const line = new Chart(
+    //     getPos, 
+    //     config
+    // )
+}
+
+function defLinePlot(id, showHis, loop, locPlot) {
+    let getPos = document.getElementById(id).getContext('2d');
+    const labels = loop;
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: `Plot ${locPlot} Training`,
+            data: showHis,
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)'
+        }]
+    };
+    const config = {
+        type: 'line',
+        data: data,
+      };
+
+    const line = new Chart(
+        getPos, 
+        config
+    )
+}
