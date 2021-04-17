@@ -4,8 +4,20 @@ fetch(url)
     .then(res => res.json())
     .then(data => {
         // showData(data);
-
-        createChart();
+        let netral = 0;
+        let positif = 0;
+        let negatif = 0;
+        data.forEach(element => {
+            if (element.label === 0) {
+                netral+=1;
+            } else if (element.label === 1) {
+                positif+=1;
+            } else {
+                negatif+=1;
+            }
+        });
+        let persenSentimen = [netral,positif, negatif];
+        createPie(persenSentimen);
     }); 
 
 function showData(data) {
@@ -110,30 +122,48 @@ function createTable(data) {
     }
 }
 
-function createChart() {
+function createPie(dtPie) {
     let chart = document.getElementById('pie').getContext('2d');
-    let myPie = new Chart(chart, {
+    const data = {
+        labels: [
+          'Netral',
+          'Positif',
+          'Negatif'
+        ],
+        datasets: [{
+          label: 'My First Dataset',
+          data: dtPie,
+          backgroundColor: [
+            '#d8e3e7',
+            '#51c4d3',
+            '#ce1212'
+          ],
+          hoverOffset: 4
+        }]
+      };
+    const config = {
         type: 'pie',
-        data: {
-            // labels: ['Red', 'Blue', 'Yellow'],
-            labels: ['Positif', 'Netral', 'Negatif'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3],
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(255, 99, 132, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(255, 99, 132, 1)'
-                ],
-                borderWidth: 1
-            }]
+        data: data,
+        options: {
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                },
+                title: {
+                    display: true,
+                    text: 'Persentase Sentimen',
+                    font: {
+                        size: 17,
+                        weight: 'normal'
+                    }
+                }
+            }
         }
-    });
+    };
+    const pie = new Chart(
+        chart,
+        config
+    )
 }
 
 const urlHistory = "http://127.0.0.1:5500/historymodel.json";
@@ -141,9 +171,5 @@ const urlHistory = "http://127.0.0.1:5500/historymodel.json";
 fetch(urlHistory)
     .then(res => res.json())
     .then(data => {
-        // console.log(data);
+        console.log(Object.getOwnPropertyNames(data));
     })
-
-function createPie() {
-    
-}
