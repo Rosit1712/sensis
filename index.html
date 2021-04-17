@@ -13,7 +13,7 @@
 <body>
     <nav class="grey darken-3">
         <div class="nav-wrapper container">
-          <a href="#" class="brand-logo ">Sentimen Analisis "Prakerja"</a>
+          <a href="#" class="brand-logo " id="logo">Sentimen Analisis "Prakerja"</a>
           <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <li><a href="index.html">Home</a></li>
@@ -31,6 +31,12 @@
 
     <main>
         <div class="container" id="home">
+            <!-- <div id="backtop">
+                <a href="#logo"><span class="material-icons center">
+                    arrow_upward
+                    </span></a>
+            </div> -->
+            <button><span class="material-icons">arrow_upward</span></button>
             <div class="row">
                 <div class="col s10">
                     <input type="text" id="search" placeholder="insert tweet">
@@ -40,6 +46,10 @@
                 </div>
                 <div class="col s12" id="tabel">
                 </div>
+               <div class="col s12" id="data">
+                    <h5 class="center">Data Sentimen</h5>
+                    <ul class="tabs" id="range"></ul>
+                </div>
             </div>
         </div>
     </main>
@@ -47,5 +57,6 @@
     <script src="js/materialize.min.js"></script>
     <script src="js/nav.js"></script>
     <script src="js/cust.js"></script>
+    <script src="js/showdata.js"></script>
 </body>
 </html>
