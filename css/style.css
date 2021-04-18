@@ -7,14 +7,20 @@
 img {
     border-radius: 50%;
 }
-
-/* #search:focus {
-    border-bottom: 4px solid #ffa000 !important;
-} */
+.brand-logo {
+    font-size: 3vw !important;
+}
 #search:focus {
     border-bottom: 1px solid #ffa000 !important;
     box-shadow: 0 1px 0 0 #ffa000 !important;
   }
+#analyze {
+    width: 70px;
+}
+#analyze div {
+    margin-left: -8px;
+    font-size: 12px;
+}
 #tabel {
     margin-top: 50px;
 }
@@ -38,25 +44,46 @@ button {
  }
 button:hover {
     background-color: #ffa000;
+    padding: 10px;
 }
-.tabs .tab a{
-    color: #000;
-} /*Black color to the text*/
 
+.tabs .tab a {
+    color: rgb(0, 0, 0);
+}
 .tabs .tab a:hover {
-    background-color:#eee;
-    color:#000;
-} /*Text color on hover*/
-
+    background-color:#bdbdbd;
+    color: #eee;
+}
 .tabs .tab a.active {
-    background-color:#ffa000;
-    color:#eee;
-} /*Background and text color when a tab is active*/
-
+    color: #eee;
+    background-color: #bdbdbd;
+}
 .tabs .indicator {
-    background-color:rgb(141, 141, 141);
-} /*Color of underline*/
+    background-color:#333333;
+}
+
 #data {
     margin-top: 10%;
+}
+.titlePie {
+    background-color: #757575;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+    padding: 10px;
+}
+.datagraf {
+    background-color: #fafafa ;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: -1px 10px 28px -14px rgba(0,0,0,0.53);
+}
 
+#pie {
+    position: relative;
+    left: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+    #pie {
+        left: .2%;
+    }
 }

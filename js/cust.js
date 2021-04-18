@@ -98,19 +98,19 @@ function predict(inputText){
   const score = tf.tidy(() => {
       const input = tf.tensor2d(paddedSequence, [1, maxlen]);
       const result = model.predict(input);
-      console.log(result.dataSync());
+      // console.log(result.dataSync());
       let predictSen = '';
       let p = Math.max(...result.dataSync());
       if (result.dataSync().indexOf(p) === 0) {
-        console.log('Netral', p);
+        // console.log('Netral', p);
         predictSen = 'Netral';
         // writeSen.innerHTML = `Netral`;
       } else if (result.dataSync().indexOf(p) === 1) {
-        console.log('Positif', p);
+        // console.log('Positif', p);
         predictSen = 'Positif';
         // writeSen.innerHTML = `Positif`;
       } else {
-        console.log('Negatif', p);
+        // console.log('Negatif', p);
         predictSen = 'Negatif';
         // writeSen.innerHTML = `Negatif`;
       }
