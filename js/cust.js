@@ -7,12 +7,16 @@ const vocab_size = 2000;
 const padding = 'post';
 const truncating = 'post';
 
+const srcModel = '/model.json';
+const srcWidx = '/word2index.json'
 
+const devModel = 'http://127.0.0.1:5500/model.json';
+const devWidx = 'http://127.0.0.1:5500/word2index.json';
 async function init() {
-  model = await tf.loadLayersModel('http://127.0.0.1:5500/model.json');
+  model = await tf.loadLayersModel(srcModel);
   // loadModel = true;
 
-  const word2indexjson = await fetch('http://127.0.0.1:5500/word2index.json');
+  const word2indexjson = await fetch(srcWidx);
   word2index = await word2indexjson.json();
 
   // const datadf = await fetch('http://127.0.0.1:8887/data.json');

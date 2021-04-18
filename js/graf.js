@@ -1,4 +1,6 @@
-const url = 'http://127.0.0.1:5500/data.json';
+const urlDev = 'http://127.0.0.1:5500/data.json';
+const url = '/data.json';
+
 fetch(url)
     .then(res => res.json())
     .then(data => {
@@ -87,7 +89,9 @@ function createPie(dtPie) {
     // )
 }
 
-const urlHistory = "http://127.0.0.1:5500/historymodel.json";
+const urlHistoryDev = "http://127.0.0.1:5500/historymodel.json";
+const urlHistory = "historymodel.json";
+
 
 fetch(urlHistory)
     .then(res => res.json())
