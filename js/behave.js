@@ -1,10 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
   M.Sidenav.init(document.querySelectorAll('.sidenav'));
-  const button = document.querySelector('button');
-  window.onscroll = () => {scrollFunction(button)};
-  button.addEventListener('click', () => {
-    topFunc();
-  })
+  M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
+    position: 'left'
+  });
+  if (window.location.pathname === '/index.html') {
+    const button = document.querySelector('button');
+    window.onscroll = () => {scrollFunction(button)};
+    button.addEventListener('click', () => {
+      topFunc();
+    })
+  }
 })
 
 function scrollFunction(button) {

@@ -20,7 +20,7 @@ function showData(data) {
     let parentTab = document.getElementById('range');
     id.forEach(nil => {
         parentTab.innerHTML += `
-        <li class="tab col 1"><a href="#${nil}">${nil}</a></li>
+        <li class="tab"><a href="#${nil}">${nil}</a></li>
         `;
     });
     M.Tabs.init(parentTab);

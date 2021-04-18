@@ -1,5 +1,4 @@
 const url = 'http://127.0.0.1:5500/data.json';
-
 fetch(url)
     .then(res => res.json())
     .then(data => {
@@ -30,6 +29,7 @@ function createPie(dtPie) {
         ],
         datasets: [{
           data: dtPie,
+          label: 'Data Sentimen',
           backgroundColor: [
             '#d8e3e7',
             '#51c4d3',
@@ -63,6 +63,28 @@ function createPie(dtPie) {
         chart,
         config
     )
+    // const config2 = {
+    //     type: 'bar',
+    //     data: data,
+    //     options: {
+    //         indexAxis: 'y',
+    //         plugins: {
+    //             legend: {
+    //                 display: false
+    //             }
+    //         },
+    //         scales: {
+    //             x: {
+    //                 display: false
+    //             }
+    //         }
+    //     }
+    // };
+    // const getBar = document.getElementById('bar');
+    // const  bar = new Chart(
+    //     getBar,
+    //     config2
+    // )
 }
 
 const urlHistory = "http://127.0.0.1:5500/historymodel.json";
@@ -102,24 +124,25 @@ function createLinePlot(history) {
     custHis3.forEach(element => {
         showhistory3.push(element);
     });
+    // const color = ['#542e71', '#fb3640', '#fdca40', '#a799b7']
 
     numArray.forEach(element => {
         if (element === 'accuracy') {
-            defLinePlot(element, showhistory, allLength, `${element} Training`);            
+            defLinePlot(element, showhistory, allLength, `${element} Training`, '#542e71');            
         }
         if (element === 'loss') {
-            defLinePlot(element, showhistory1, allLength, `${element} Training`);            
+            defLinePlot(element, showhistory1, allLength, `${element} Training`, '#fb3640');            
         }
         if (element === 'val_accuracy') {
-            defLinePlot(element, showhistory2, allLength, element);            
+            defLinePlot(element, showhistory2, allLength, element, '#fdca40');            
         }
         if (element === 'val_loss') {
-            defLinePlot(element, showhistory3, allLength, element);            
+            defLinePlot(element, showhistory3, allLength, element, '#a799b7');            
         }
     });
 }
 
-function defLinePlot(id, showHis, loop, locPlot) {
+function defLinePlot(id, showHis, loop, locPlot, color) {
     let getPos = document.getElementById(id).getContext('2d');
     const labels = loop;
     const data = {
@@ -128,7 +151,7 @@ function defLinePlot(id, showHis, loop, locPlot) {
             label: `Plot ${locPlot}`,
             data: showHis,
             fill: false,
-            borderColor: 'rgb(75, 192, 192)'
+            borderColor: color
         }]
     };
     const config = {
