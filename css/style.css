@@ -10,17 +10,12 @@ img {
 .brand-logo {
     font-size: 3vw !important;
 }
+
 #search:focus {
     border-bottom: 1px solid #ffa000 !important;
     box-shadow: 0 1px 0 0 #ffa000 !important;
   }
-#analyze {
-    width: 70px;
-}
-#analyze div {
-    margin-left: -8px;
-    font-size: 12px;
-}
+
 #tabel {
     margin-top: 50px;
 }
@@ -85,5 +80,9 @@ button:hover {
 @media only screen and (max-width: 600px) {
     #pie {
         left: .2%;
+    }
+    #analyze {
+        position: absolute;
+        left: 38%;
     }
 }

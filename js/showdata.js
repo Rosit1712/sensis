@@ -1,4 +1,4 @@
-const urlDev = 'http://127.0.0.1:5500/data.json';
+// const url = 'http://127.0.0.1:5500/data.json';
 const url = './data.json';
 
 document.addEventListener('DOMContentLoaded', () => {

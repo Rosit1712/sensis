@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
-
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.4.0/tf.min.js" integrity="sha512-6jQOFCf338nZwh1YVmzwzpdPTOkl1RuFXtnXbqCmEkFqVlOj3v7gBNk5FusU3e44DB6REf58f685Xk5aErfFWA==" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="grey darken-3">
@@ -33,10 +34,10 @@
         <div class="container" id="home">
             <button class="tooltipped" data-tooltip="Back to Top"><span class="material-icons">arrow_upward</span></button>
             <div class="row">
-                <div class="col s10">
+                <div class="col l11 m11 s12">
                     <input type="text" id="search" placeholder="insert tweet">
                 </div>
-                <div class="col s2">
+                <div class="col l1 m1 s2">
                     <a class="waves-effect waves-light btn amber darken-2" id="analyze"><div>analyze</div></a>
                 </div>
                 <div class="col s12" id="tabel">
