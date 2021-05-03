@@ -2,8 +2,8 @@ let model;
 let word2index;
 let dt;
 // let loadModel = false;
-const maxlen = 40;
-const vocab_size = 2000;
+const maxlen = 50;
+const vocab_size = 8000;
 const padding = 'post';
 const truncating = 'post';
 
