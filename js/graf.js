@@ -1,5 +1,5 @@
-const url = 'http://127.0.0.1:5500/data.json';
-// const url = './data.json';
+// const url = 'http://127.0.0.1:5500/data.json';
+const url = './data.json';
 
 fetch(url)
     .then(res => res.json())
@@ -113,8 +113,8 @@ function createBar(data) {
     )
 }
 
-const urlHistory = "http://127.0.0.1:5500/historymodel.json";
-// const urlHistory = "./historymodel.json";
+// const urlHistory = "http://127.0.0.1:5500/historymodel.json";
+const urlHistory = "./historymodel.json";
 
 
 fetch(urlHistory)
