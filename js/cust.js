@@ -7,11 +7,11 @@ const vocab_size = 8000;
 const padding = 'post';
 const truncating = 'post';
 
-const srcModel = './model.json';
-const srcWidx = './word2index.json';
+// const srcModel = './model.json';
+// const srcWidx = './word2index.json';
 
-// const srcModel = 'http://127.0.0.1:5500/model.json';
-// const srcWidx = 'http://127.0.0.1:5500/word2index.json';
+const srcModel = 'http://127.0.0.1:5500/model.json';
+const srcWidx = 'http://127.0.0.1:5500/word2index.json';
 async function init() {
   model = await tf.loadLayersModel(srcModel);
   // loadModel = true;

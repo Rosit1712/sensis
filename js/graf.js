@@ -1,5 +1,5 @@
-// const url = 'http://127.0.0.1:5500/data.json';
-const url = './data.json';
+const url = 'http://127.0.0.1:5500/data.json';
+// const url = './data.json';
 
 fetch(url)
     .then(res => res.json())
@@ -17,11 +17,12 @@ fetch(url)
                 negatif+=1;
             }
         });
-        let persenSentimen = [netral,positif, negatif];
+        let persenSentimen = [netral, positif, negatif];
         createPie(persenSentimen);
+        createBar(persenSentimen);
     }); 
 
-function createPie(dtPie) {
+    function createPie(dtPie) {
     let chart = document.getElementById('pie').getContext('2d');
     const data = {
         labels: [
@@ -33,11 +34,11 @@ function createPie(dtPie) {
           data: dtPie,
           label: 'Data Sentimen',
           backgroundColor: [
-            '#d8e3e7',
-            '#51c4d3',
-            '#ce1212'
+            '#fbf002',
+            '#1e9600',
+            '#fe0002'
           ],
-          hoverOffset: 4
+          hoverOffset: 8
         }]
       };
 
@@ -50,8 +51,8 @@ function createPie(dtPie) {
                     position: 'bottom'
                 },
                 title: {
-                    display: true,
-                    text: 'Persentase Sentimen',
+                    display: false,
+                    text: 'Pie Chart',
                     font: {
                         size: 17,
                         weight: 'normal'
@@ -65,32 +66,55 @@ function createPie(dtPie) {
         chart,
         config
     )
-    // const config2 = {
-    //     type: 'bar',
-    //     data: data,
-    //     options: {
-    //         indexAxis: 'y',
-    //         plugins: {
-    //             legend: {
-    //                 display: false
-    //             }
-    //         },
-    //         scales: {
-    //             x: {
-    //                 display: false
-    //             }
-    //         }
-    //     }
-    // };
-    // const getBar = document.getElementById('bar');
-    // const  bar = new Chart(
-    //     getBar,
-    //     config2
-    // )
 }
 
-// const urlHistory = "http://127.0.0.1:5500/historymodel.json";
-const urlHistory = "./historymodel.json";
+function createBar(data) {
+    let chart = document.getElementById('bar').getContext('2d');
+    const data2 = {
+        labels: [
+          'Netral',
+          'Positif',
+          'Negatif'
+        ],
+        datasets: [{
+          data: data,
+          backgroundColor: [
+            '#fbf002',
+            '#1e9600',
+            '#fe0002'
+          ],
+        }]
+      };
+
+    const config = {
+        type: 'bar',
+        data: data2,
+        options: {
+            indexAxis: 'y',
+            plugins: {
+                legend: {
+                    position: 'none'
+                },
+                title: {
+                    display: false,
+                    text: 'Bar Chart',
+                    font: {
+                        size: 17,
+                        weight: 'normal'
+                    }
+                }
+            }
+        }
+    };
+
+    const pie = new Chart(
+        chart,
+        config
+    )
+}
+
+const urlHistory = "http://127.0.0.1:5500/historymodel.json";
+// const urlHistory = "./historymodel.json";
 
 
 fetch(urlHistory)
